@@ -4,7 +4,7 @@ import { TonConnectButton, useTonAddress } from "@tonconnect/ui-react";
 import { isMobile } from "react-device-detect";
 import ProgressBar from "../component/ProgressBar";
 import Footer from "../component/Footer";
-
+import confetti from 'canvas-confetti'; // Importing the confetti library
 import Coin from "/image/coin.svg";
 
 const Home = () => {
@@ -21,6 +21,7 @@ const Home = () => {
   );
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [tapCount, setTapCount] = useState<number>(0); // Tap count state
 
   const buttonWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +33,7 @@ const Home = () => {
     if (buttonWrapperRef.current) {
       const tonConnectButton = (buttonWrapperRef.current as any).querySelector(
         "button"
-      ); // Adjust selector if necessary
+      );
       if (tonConnectButton) {
         tonConnectButton.click();
       }
@@ -43,16 +44,13 @@ const Home = () => {
     if (number >= 1000000000) {
       number = number / 1000000000;
       return `${new Intl.NumberFormat(locale).format(number)}B`;
-    }
-    else if (number >= 1000000) {
+    } else if (number >= 1000000) {
       number = number / 1000000;
       return `${new Intl.NumberFormat(locale).format(number)}M`;
-    }
-    else if (number >= 1000) {
+    } else if (number >= 1000) {
       number = number / 1000;
       return `${new Intl.NumberFormat(locale).format(number)}K`;
-    }
-    else {
+    } else {
       return new Intl.NumberFormat(locale).format(number);
     }
   }
@@ -62,21 +60,18 @@ const Home = () => {
   const handleClick = (event: any) => {
     event.preventDefault();
     const rect = event.target.getBoundingClientRect();
-    const x = event.clientX - rect.left; // x position within the target
-    const y = event.clientY - rect.top; // y position within the target
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
 
-    // Step 1: Create and append a <style> element
     const styleElement = document.createElement("style");
     document.head.appendChild(styleElement);
 
-    // Step 2: Define the @keyframes animation
     styleElement.sheet &&
       styleElement.sheet.insertRule(
         "@keyframes  fade-out-top-right {0% {opacity: 1; transform: translateY(0); } 100% {opacity: 0;transform: translateY(-100%);}}",
         0
       );
 
-    // Create a new div element
     const newDiv = document.createElement("div");
     newDiv.textContent = "+1";
     newDiv.style.position = "absolute";
@@ -85,9 +80,7 @@ const Home = () => {
     newDiv.style.color = "white";
     newDiv.draggable = false;
     newDiv.className =
-      "dynamic-div animate-fadeouttopright z-20 transform max-sm:text-3xl text-5xl font-bold transition not-selectable"; // You can add Tailwind classes here if needed
-
-    // Append the new div to the body
+      "dynamic-div animate-fadeouttopright z-20 transform max-sm:text-3xl text-5xl font-bold transition not-selectable";
 
     bodyRef.current && bodyRef.current.appendChild(newDiv);
     const interval = setTimeout(() => newDiv && newDiv.remove(), 400);
@@ -110,19 +103,35 @@ const Home = () => {
         setToken(token + 1);
         localStorage.setItem("total", String(token + 1));
       }
+
+      // Increment tap count and trigger confetti if needed
+      setTapCount(prevCount => {
+        const newCount = prevCount + 1;
+        if (newCount % 100 === 0) {
+          triggerConfetti(); // Function to trigger confetti
+        }
+        return newCount;
+      });
+
       handleClick(event);
     }
   };
 
+  const triggerConfetti = () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { x: 0.5, y: 0.5 },
+    });
+  };
+
   const handleMultiTouchStart = (event: TouchEvent) => {
-    // Iterate over each touch point
     Array.from(event.touches).forEach((touch) => {
       console.log("Touch's current position:", touch);
-      // Call handleClick for each touch point
       handleClick({
         ...touch,
         target: event.target,
-        preventDefault: () => {}, // Mock preventDefault for non-MouseEvent
+        preventDefault: () => {},
         clientX: touch.clientX,
         clientY: touch.clientY,
         touches: [],
@@ -191,12 +200,14 @@ const Home = () => {
           className="not-selectable"
           style={{ WebkitTextStrokeColor: "white", marginTop: "-40px" }}
         >
-          <div  style={{ WebkitTextStrokeWidth: 1, fontSize: "4em" }}>
+          <div style={{ WebkitTextStrokeWidth: 1, fontSize: "4em" }}>
             Tap & Earn
           </div>
           <div className="bg-black w-[160px] mx-auto rounded-full justify-between flex flex-row gap-1 px-3 py-1 border-2 border-white items-center">
             <img src={Coin} alt="Coin"></img>
-            <div className="text-white pr-3 text-[18px]">{formatNumberWithCommas(token)}</div>
+            <div className="text-white pr-3 text-[18px]">
+              {formatNumberWithCommas(token)}
+            </div>
           </div>
         </div>
 
@@ -225,11 +236,11 @@ const Home = () => {
                 ? "cursor-pointer"
                 : "cursor-not-allowed opacity-50"
             }`}
-           style={{
-    backgroundImage: "url(https://i.imgur.com/9qxc9HK.png)",
-    backgroundSize: "110%",
-    backgroundPosition: "center"
-}}
+            style={{
+              backgroundImage: "url(https://i.imgur.com/9qxc9HK.png)",
+              backgroundSize: "110%",
+              backgroundPosition: "center",
+            }}
           ></div>
         </div>
         <div className="w-full not-selectable" draggable="false">
@@ -254,7 +265,7 @@ const Home = () => {
         className={`absolute bottom-0 left-0 right-0 p-4 z-20 transition-all delay-100 duration-300 ease-in-out shadow-lg bg-[#1E3D4B] rounded-t-2xl flex flex-col justify-center gap-4 transform max-h-[80vh] overflow-y-auto ${
           modalVisible ? "translate-y-0" : "translate-y-full"
         }`}
-        style={{ transformOrigin: "bottom" }} // This ensures the transformation starts from the bottom
+        style={{ transformOrigin: "bottom" }}
         ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
