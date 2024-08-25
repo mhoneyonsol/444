@@ -226,9 +226,9 @@ const Home = () => {
                 : "cursor-not-allowed opacity-50"
             }`}
            style={{
-    backgroundImage: "url(https://i.imgur.com/9qxc9HK.png)",
-    backgroundSize: "cover",
-    backgroundPosition: "top"
+    background-image: url(https://i.imgur.com/9qxc9HK.png),
+    background-size: 110%,
+    background-position: center
 }}
           ></div>
         </div>
