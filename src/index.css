@@ -35,8 +35,9 @@ body {
   min-height: 100vh;
   color: #ffffff;
   /* background: linear-gradient(to bottom, #000000, #24556B); */
-  background: url('/image/Background.png');
+  background: url(https://i.giphy.com/xTiTniuHdUjpOlNo1q.webp);
   background-size: cover;
+  background-position: top;
   font-family: 'Outfit', sans-serif;
   overflow: hidden;
 }
