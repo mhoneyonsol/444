@@ -896,7 +896,7 @@ img,video{
     --tw-border-opacity: 1;
     border-color:rgb(67 224 247 / var(--tw-border-opacity));
     border: none;
-    box-shadow: inset 1px -4px 20px 3px #ffffff4f
+    box-shadow: 0px 2px 11px 2px #ffffff4f
 }
 .border-black{
     --tw-border-opacity: 1;
@@ -928,7 +928,8 @@ img,video{
 }
 .bg-\[\#CBEFF9\]{
     --tw-bg-opacity: 1;
-    background-color:#ffffff47
+    background-color: #ffffff;
+    color: black;
 }
 .bg-black{
     --tw-bg-opacity: 1;
