@@ -191,7 +191,7 @@ const Home = () => {
           className="not-selectable"
           style={{ WebkitTextStrokeColor: "white" }}
         >
-          <div  style={{ WebkitTextStrokeWidth: 1, fontSize: 4em }}>
+          <div  style={{ WebkitTextStrokeWidth: 1, fontSize: "4em" }}>
             Tap & Earn
           </div>
           <div className="bg-black w-[160px] mx-auto rounded-full justify-between flex flex-row gap-1 px-3 py-1 border-2 border-white items-center">
