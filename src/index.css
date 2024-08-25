@@ -815,7 +815,8 @@ img,video{
     justify-content:space-between
 }
 .justify-around{
-    justify-content:space-around
+    justify-content:space-around;
+    margin-bottom:15px
 }
 .gap-1{
     gap:.25rem
