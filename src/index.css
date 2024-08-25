@@ -894,7 +894,9 @@ img,video{
 }
 .border-\[\#43E0F7\]{
     --tw-border-opacity: 1;
-    border-color:rgb(67 224 247 / var(--tw-border-opacity))
+    border-color:rgb(67 224 247 / var(--tw-border-opacity));
+    border: none;
+    box-shadow: inset 1px -4px 20px 3px #ffffff4f
 }
 .border-black{
     --tw-border-opacity: 1;
@@ -926,7 +928,7 @@ img,video{
 }
 .bg-\[\#CBEFF9\]{
     --tw-bg-opacity: 1;
-    background-color:rgb(203 239 249 / var(--tw-bg-opacity))
+    background-color:#ffffff47
 }
 .bg-black{
     --tw-bg-opacity: 1;
