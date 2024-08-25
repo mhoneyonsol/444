@@ -204,40 +204,31 @@ const Tap = () => {
 
   const getPositionOfSpaceship = () => {
     if (!spaceRef.current) return;
-    const rect = spaceRef.current.getBoundingClientRect();
-    const position = {
-      x: window.scrollX + rect.left,
-      y: window.scrollY + rect.top,
+    const spaceshipRect = spaceRef.current.getBoundingClientRect();
+    const spaceshipCenter = {
+      x: window.scrollX + spaceshipRect.left + spaceshipRect.width / 2,
+      y: window.scrollY + spaceshipRect.top + spaceshipRect.height / 2,
     };
-    return position;
+    return spaceshipCenter;
   };
 
   const handleStart = () => {
-    if (isStart) return;
-    if (spaceRef.current) {
-      const intervalId = setInterval(() => {
-        setPositionTop((prevPosition) => prevPosition + 5);
-        getPositionOfSpaceship();
-      }, 100);
-      return () => clearInterval(intervalId);
-    }
+    if (isGoing) return;
+    setIsGoing(true);
   };
 
   const handleJump = (e: React.TouchEvent<HTMLDivElement>) => {
     e.preventDefault(); // Prevent default touch behavior
-    if (!isStart) return;
-    setIsGoing(true);
+    if (isGoing) return;
 
-    const jumpHeight = 60;
-    const jumpDuration = 500;
-    const jumpInterval = 10;
-    const totalIncrements = jumpDuration / jumpInterval;
-    const incrementAmount = jumpHeight / totalIncrements;
+    const jumpInterval = 20; // Interval time in ms
+    const jumpIncrements = 30; // Number of increments
+    const incrementAmount = 10; // Increment amount
 
     let currentIncrement = 0;
 
     const jumpIntervalId = setInterval(() => {
-      if (currentIncrement >= totalIncrements) {
+      if (currentIncrement >= jumpIncrements) {
         clearInterval(jumpIntervalId);
         setIsGoing(false);
       } else {
@@ -252,7 +243,7 @@ const Tap = () => {
     const promises = images.map(image => new Promise<void>((resolve, reject) => {
       const img = new Image();
       img.src = image;
-      img.onload = resolve;
+      img.onload = () => resolve();
       img.onerror = reject;
     }));
 
@@ -304,12 +295,6 @@ const Tap = () => {
               }}
               className='font-press-start text-[28px] animate-fadeouttopright transform'
               key={index}
-              onLoad={() => {
-                setTimeout(() => {
-                  let tmp = coins.filter((coin) => !coin.isGet);
-                  setCoins(tmp);
-                }, 1000);
-              }}
             >
               +1
             </div>
