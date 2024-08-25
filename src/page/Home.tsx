@@ -188,10 +188,10 @@ const Home = () => {
           <TonConnectButton className="absolute right-0" />
         </div>
         <div
-          className="text-center mt-[10%] text-black font-press-start not-selectable"
+          className="not-selectable"
           style={{ WebkitTextStrokeColor: "white" }}
         >
-          <div className="text-[32px]" style={{ WebkitTextStrokeWidth: 1 }}>
+          <div  style={{ WebkitTextStrokeWidth: 1, fontSize: 4em }}>
             Tap & Earn
           </div>
           <div className="bg-black w-[160px] mx-auto rounded-full justify-between flex flex-row gap-1 px-3 py-1 border-2 border-white items-center">
