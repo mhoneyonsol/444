@@ -223,7 +223,7 @@ const Tap = () => {
     }
   };
 
-  const handleJump = (e) => {
+  const handleJump = (e: React.TouchEvent<HTMLDivElement>) => {
     e.preventDefault(); // Prevent default touch behavior
     if (!isStart) return;
     setIsGoing(true);
@@ -249,7 +249,7 @@ const Tap = () => {
 
   useEffect(() => {
     const images = [Coin, getCoinSVG, rotatedSpaceDown, rotatedSpaceUp, EarthImage, waterFallSVG];
-    const promises = images.map(image => new Promise((resolve, reject) => {
+    const promises = images.map(image => new Promise<void>((resolve, reject) => {
       const img = new Image();
       img.src = image;
       img.onload = resolve;
