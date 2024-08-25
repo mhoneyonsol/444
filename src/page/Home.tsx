@@ -225,7 +225,7 @@ const Home = () => {
                 ? "cursor-pointer"
                 : "cursor-not-allowed opacity-50"
             }`}
-            style={{ backgroundImage: "url(https://static.vecteezy.com/system/resources/previews/011/964/954/non_2x/3d-gold-dollar-render-or-coin-sign-free-png.png)" }}
+            style={{ backgroundImage: "url(https://i.imgur.com/9qxc9HK.png)" }}
           ></div>
         </div>
         <div className="w-full" draggable="false">
