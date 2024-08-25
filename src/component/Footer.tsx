@@ -17,7 +17,7 @@ export default function Footer() {
         }`}
       >
         <img
-          src="/image/play.png"
+          src="https://i.imgur.com/9neb8gU.png"
           alt="play"
           className="w-12 h-12 p-[1px] rounded-lg"
         />
@@ -33,7 +33,7 @@ export default function Footer() {
         }`}
       >
         <img
-          src="/image/boosts.png"
+          src="https://i.imgur.com/fojgHxl.png"
           alt="boosts"
           className="w-12 h-12 p-[1px] rounded-lg"
         />
@@ -49,7 +49,7 @@ export default function Footer() {
         }`}
       >
         <img
-          src="/image/quest.png"
+          src="https://i.imgur.com/UDa7XQF.png"
           alt="tasks"
           className="w-12 h-12 p-[1px] rounded-lg"
         />
@@ -67,7 +67,7 @@ export default function Footer() {
         }`}
       >
         <img
-          src="/image/ranking.png"
+          src="https://i.imgur.com/yv4hgkR.png"
           alt="ranking"
           className="w-12 h-12 p-[1px] rounded-lg"
         />
