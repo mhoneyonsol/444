@@ -232,7 +232,7 @@ const Home = () => {
 }}
           ></div>
         </div>
-        <div className="w-full not-selectable" style={{marginTop: "-50px"}} draggable="false">
+        <div className="w-full not-selectable" draggable="false">
           <div className="flex flex-col items-center w-full not-selectable">
             <div className="w-full px-10">
               <div className="flex justify-between items-baseline w-full mb-2">
@@ -245,7 +245,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div style={{marginTop: "-50px"}} className="w-full">
+        <div className="w-full">
           <Footer />
         </div>
       </div>
