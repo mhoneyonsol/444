@@ -232,7 +232,7 @@ const Home = () => {
 }}
           ></div>
         </div>
-        <div className="w-full" draggable="false">
+        <div className="w-full not-selectable" draggable="false">
           <div className="flex flex-col items-center w-full not-selectable">
             <div className="w-full px-10">
               <div className="flex justify-between items-baseline w-full mb-2">
