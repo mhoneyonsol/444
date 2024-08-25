@@ -1053,6 +1053,11 @@ img,video{
 .text-4xl{
     font-size:2.25rem;
     line-height:2.5rem
+    -webkit-text-stroke: 0 !important;
+    font-size: 4em;
+    font-weight: 100 !important;
+        margin-top: 10%;
+    margin-bottom: 10%;
 }
 .text-5xl{
     font-size:3rem;
@@ -1142,7 +1147,7 @@ img,video{
     color: rgb(0 0 0 / var(--tw-text-opacity));
     font-family: monospace;
     font-weight: 100;
-    font-size: revert;
+    
 }
 .text-white{
     --tw-text-opacity: 1;

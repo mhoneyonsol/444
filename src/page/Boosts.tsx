@@ -64,7 +64,7 @@ const Boosts = () => {
         <img src={Coin} alt="Coin"></img>
         <div>{totalScore || 0}</div>
       </div>
-      <div>
+      <div style={{height: "80vh"}}>
         <div
           className="font-press-start text-4xl text-black font-semibold"
           style={{
