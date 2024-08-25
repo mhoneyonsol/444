@@ -189,7 +189,7 @@ const Home = () => {
         </div>
         <div
           className="not-selectable"
-          style={{ WebkitTextStrokeColor: "white" }}
+          style={{ WebkitTextStrokeColor: "white", marginTop: "-40px" }}
         >
           <div  style={{ WebkitTextStrokeWidth: 1, fontSize: "4em" }}>
             Tap & Earn

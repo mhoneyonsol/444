@@ -9,7 +9,7 @@ export default function Footer() {
     setPath(location.pathname);
   }, [location]);
   return (
-    <div className="flex justify-around items-center">
+    <div className="flex justify-around items-center not-selectable">
       <Link
         to="/"
         className={`flex flex-col items-center mt-3 transform origin-bottom justify-center cursor-pointer transition ${
