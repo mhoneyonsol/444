@@ -225,7 +225,11 @@ const Home = () => {
                 ? "cursor-pointer"
                 : "cursor-not-allowed opacity-50"
             }`}
-            style={{ backgroundImage: "url(https://i.imgur.com/9qxc9HK.png)" }}
+           style={{
+    backgroundImage: "url(https://i.imgur.com/9qxc9HK.png)",
+    backgroundSize: "cover",
+    backgroundPosition: "top"
+}}
           ></div>
         </div>
         <div className="w-full" draggable="false">
